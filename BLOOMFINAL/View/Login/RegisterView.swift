@@ -31,18 +31,25 @@ struct RegisterView: View{
             RegisterBackgroundView()
             VStack(spacing: 10){
                 Text ("BLOOM")
-                    .font (.largeTitle.bold ())
-                    .hAlign( .leading)
+                    .font (.largeTitle)
+                    .fontWeight(.heavy)
+                    .padding(.top, 20)
+                    .hAlign(.leading)
+                
+                Image("Image 15")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 300, height: 300)
                 
                 Text ("Create Account")
-                    .font (.title3)
+                    .font (.title3.bold())
                     .hAlign(.leading)
                 
                 VStack(spacing: 12){
                     TextField("Username", text: $userName)
                         .textContentType(.name)
                         .border(1, .black)
-                        .padding(.top, 25)
+                        .padding(.top, 10)
                     
                     iPhoneNumberField("Mobile number", text: $phoneNum)
                         .border(1, .black)
@@ -60,24 +67,28 @@ struct RegisterView: View{
                             .foregroundColor(.white)
                             .hAlign(.center)
                             .fillView(.black)
+                            .cornerRadius(15)
                     }
                     .padding(.top)
+                    .frame(width: 130)
                     .disableWithOpacity(userName == "" || password == "" || emailID == "" || phoneNum == "" )
                     
                 }
                 
                 HStack{
                 Text ("Already have an account?")
-                        .foregroundColor(.gray)
+                        .foregroundColor(Color("primary"))
                     
                     Button ("Login Now"){
                         dismiss()
                     }
                     .fontWeight (.bold)
-                    .foregroundColor (.black)
+                    .foregroundColor (Color("accent"))
                 }
                 .font(.callout)
-                .vAlign(.bottom)
+                .padding(20)
+                Spacer()
+                
             }
             .vAlign(.top)
             .padding(15)

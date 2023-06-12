@@ -116,7 +116,6 @@ struct LoginView: View {
                             .hAlign(.center)
                             .fillView(Color("primary"))
                             .cornerRadius(15)
-
                     }
                     .frame(width: 130)
                 }
