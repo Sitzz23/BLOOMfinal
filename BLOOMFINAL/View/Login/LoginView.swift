@@ -18,6 +18,8 @@ struct LoginView: View {
     @State var showError: Bool = false
     @State var errorMessage: String = ""
     @State var isLoading: Bool = false
+    @FocusState private var isTextFieldFocused: Bool
+    @StateObject private var keyboardHandler = KeyboardHandler()
     
     //MARK: user defaults
     @AppStorage("log_status") var logStatus: Bool = false
@@ -25,61 +27,146 @@ struct LoginView: View {
     @AppStorage("user_UID") var userUID: String = ""
     var body: some View {
         
-        VStack(spacing: 10){
-            Text ("BLOOM")
-                .font (.largeTitle.bold ())
-                .hAlign( .leading)
-            
-            Text ("Login")
-                .font (.title3)
-                .hAlign(.leading)
-            
-            VStack(spacing: 12){
-                TextField("Email", text: $emailID)
-                    .border(1, .black)
-                    .padding(.top, 25)
+        ZStack {
+            LoginBackgroundView()
+            VStack(spacing: 10){
                 
-                SecureField( "Password", text: $password)
-                    .textContentType (.emailAddress )
-                    .border(1, .black)
+                Text ("BLOOM")
+                    .font (.largeTitle)
+                    .fontWeight(.heavy)
+                    .padding(.leading, 220)
+                    .padding(.top, 20)
                 
-                Button ("Reset password?", action: resetPassword)
-                    .font (.callout)
-                    .fontWeight (.medium)
-                    .tint (.black)
-                    .hAlign(.trailing)
+                Image("Image 42")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 300, height: 300)
                 
-                Button(action: loginUser){
-                    Text("Sign in")
-                        .foregroundColor(.white)
-                        .hAlign(.center)
-                        .fillView(.black)
+                Text ("Login to your account")
+                    .font (.title3.bold())
+                    .hAlign(.leading)
+                    .padding(.bottom, 20)
+                
+                VStack(spacing: 12){
+                    //Ztack is used to put the field title over the rounded rectangle
+                    ZStack(alignment: .topLeading) {
+                        RoundedRectangle(cornerRadius: 14)
+                            .stroke(Color("myGray"), lineWidth: 2)
+                            .frame(width: 350, height: 55)
+                        
+                        Text ("Email ID")
+                            .font (.title3)
+                            .fontWeight(.medium)
+                            .frame(width: 120, height: 20)
+                            .background(Color("background"))
+                            .offset(x:20, y: -10)
+                        
+                        TextField("example@email. com", text: $emailID)
+                            .padding(.top, 15)
+                            .padding(.leading, 30)
+//                            .focused($isTextFieldFocused)
+//                            .onTapGesture {
+//                                isTextFieldFocused = true
+//                            }
+                        
+                    }
+                    .padding(.bottom, 20)
+//                    .onTapGesture {
+//                        closeKeyboard()
+//                    }
+                   
+                    //Ztack is used to put the field title over the rounded rectangle
+                    ZStack(alignment: .topLeading) {
+                        
+                        RoundedRectangle(cornerRadius: 14)
+                            .stroke(Color("myGray"), lineWidth: 2)
+                            .frame(width: 350, height: 55)
+                        
+                        Text ("Password")
+                            .font (.title3)
+                            .fontWeight(.medium)
+                            .frame(width: 120, height: 20)
+                            .background(Color("background"))
+                            .offset(x:20, y: -10)
+                        
+                        SecureField( "***********", text: $password)
+                            .textContentType (.emailAddress)
+                            .padding(.top, 19)
+                            .padding(.leading, 30)
+//                            .focused($isTextFieldFocused)
+//                            .onTapGesture {
+//                                isTextFieldFocused = true
+//                            }
+                    }
+//                    .onTapGesture {
+//                        closeKeyboard()
+//                    }
+
+                    Button ("Reset password?", action: resetPassword)
+                        .foregroundColor(Color("myGray"))
+                        .font (.callout)
+                        .fontWeight (.medium)
+                        .tint (.black)
+                        .hAlign(.trailing)
+                    
+                    Button(action: loginUser){
+                        Text("Login")
+                            .fontWeight(.bold)
+                            .foregroundColor(Color("background"))
+                            .hAlign(.center)
+                            .fillView(Color("primary"))
+                            .cornerRadius(15)
+
+                    }
+                    .frame(width: 130)
                 }
-                .padding(.top)
-            }
-            
-            HStack{
-            Text ("Don't have an account?")
-                    .foregroundColor(.gray)
                 
-                Button ("Register Now"){
-                    createAccount.toggle()
+                HStack {
+                    Button(action: loginUser){
+                        Image("Image 43")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 50, height: 50)
+                    }
+                    .cornerRadius(10)
+                    
+                    Text("or")
+                        .foregroundColor(Color("myGray"))
+                    
+                    Button(action: loginUser){
+                        Image("Image 18")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 50, height: 50)
+                    }
+                    .cornerRadius(10)
+                    
                 }
-                .fontWeight (.bold)
-                .foregroundColor (.black)
+                
+                VStack{
+                Text ("Don't have an account?")
+                        .foregroundColor(Color("primary"))
+                    
+                    Button ("Sign up")
+                    {
+                        createAccount.toggle()
+                    }
+                    .fontWeight (.bold)
+                    .foregroundColor(Color("accent"))
+                }
+                .font(.callout)
             }
-            .font(.callout)
-            .vAlign(.bottom)
-        }
-        .overlay(content: {
-            LoadingView(show: $isLoading)
-        })
-        .vAlign(.top)
-        .padding (15)
-        .fullScreenCover(isPresented: $createAccount){
-            RegisterView()
-        }
+            .padding(.bottom, keyboardHandler.keyboardHeight)
+            .overlay(content: {
+                LoadingView(show: $isLoading)
+            })
+            .vAlign(.top)
+            .padding (15)
+            .fullScreenCover(isPresented: $createAccount){
+                RegisterView()
+            }
         .alert(errorMessage, isPresented: $showError, actions: {})
+        }
     }
     
     func loginUser(){
@@ -130,8 +217,29 @@ struct LoginView: View {
         })
     }
 }
-
-
+struct LoginBackgroundView: View {
+    
+    var body: some View {
+        ZStack(alignment: .topLeading){
+            Image("Image 20")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 180)
+                .offset(x: -80,y: -290)
+            
+            Image("Image 29")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 250, height: 300)
+                .rotationEffect(Angle(degrees: -25))
+                .offset(x: 180, y: 420)
+                
+          
+        }
+        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        .background(Color("background"))
+    }
+}
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {

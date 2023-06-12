@@ -27,62 +27,65 @@ struct RegisterView: View{
     @AppStorage("user_UID") var userUID: String = ""
     
     var body: some View{
-        VStack(spacing: 10){
-            Text ("BLOOM")
-                .font (.largeTitle.bold ())
-                .hAlign( .leading)
-            
-            Text ("Create Account")
-                .font (.title3)
-                .hAlign(.leading)
-            
-            VStack(spacing: 12){
-                TextField("Username", text: $userName)
-                    .textContentType(.name)
-                    .border(1, .black)
-                    .padding(.top, 25)
+        ZStack {
+            RegisterBackgroundView()
+            VStack(spacing: 10){
+                Text ("BLOOM")
+                    .font (.largeTitle.bold ())
+                    .hAlign( .leading)
                 
-                iPhoneNumberField("Mobile number", text: $phoneNum)
-                    .border(1, .black)
+                Text ("Create Account")
+                    .font (.title3)
+                    .hAlign(.leading)
                 
-                TextField("Email", text: $emailID)
-                    .textContentType(.emailAddress)
-                    .border(1, .black)
+                VStack(spacing: 12){
+                    TextField("Username", text: $userName)
+                        .textContentType(.name)
+                        .border(1, .black)
+                        .padding(.top, 25)
+                    
+                    iPhoneNumberField("Mobile number", text: $phoneNum)
+                        .border(1, .black)
+                    
+                    TextField("Email", text: $emailID)
+                        .textContentType(.emailAddress)
+                        .border(1, .black)
+                    
+                    SecureField( "Password", text: $password)
+                        .textContentType (.password )
+                        .border(1, .black)
                 
-                SecureField( "Password", text: $password)
-                    .textContentType (.password )
-                    .border(1, .black)
-            
-                Button(action: registerUser){
-                    Text("Sign up")
-                        .foregroundColor(.white)
-                        .hAlign(.center)
-                        .fillView(.black)
+                    Button(action: registerUser){
+                        Text("Sign up")
+                            .foregroundColor(.white)
+                            .hAlign(.center)
+                            .fillView(.black)
+                    }
+                    .padding(.top)
+                    .disableWithOpacity(userName == "" || password == "" || emailID == "" || phoneNum == "" )
+                    
                 }
-                .padding(.top)
-                .disableWithOpacity(userName == "" || password == "" || emailID == "" || phoneNum == "" )
                 
-            }
-            
-            HStack{
-            Text ("Already have an account?")
-                    .foregroundColor(.gray)
-                
-                Button ("Login Now"){
-                    dismiss()
+                HStack{
+                Text ("Already have an account?")
+                        .foregroundColor(.gray)
+                    
+                    Button ("Login Now"){
+                        dismiss()
+                    }
+                    .fontWeight (.bold)
+                    .foregroundColor (.black)
                 }
-                .fontWeight (.bold)
-                .foregroundColor (.black)
+                .font(.callout)
+                .vAlign(.bottom)
             }
-            .font(.callout)
-            .vAlign(.bottom)
-        }
-        .vAlign(.top)
-        .padding(15)
-        .alert(errorMessage, isPresented: $showError, actions: {})
-        .overlay(content: {
-            LoadingView(show: $isLoading)
+            .vAlign(.top)
+            .padding(15)
+            .alert(errorMessage, isPresented: $showError, actions: {})
+            .overlay(content: {
+                LoadingView(show: $isLoading)
         })
+        }
     }
     
     func registerUser(){
@@ -119,8 +122,32 @@ struct RegisterView: View{
     }
 }
 
+struct RegisterBackgroundView: View {
+    
+    var body: some View {
+        ZStack(alignment: .topLeading){
+            Image("Image 1")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 180)
+                .offset(x: 150,y: -320)
+            
+            Image("Image 29")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 250, height: 300)
+                .rotationEffect(Angle(degrees: -25))
+                .offset(x: -190, y: 410)
+                
+          
+        }
+        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        .background(Color("background"))
+    }
+}
+
 struct RegisterView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+       RegisterView()
     }
 }
