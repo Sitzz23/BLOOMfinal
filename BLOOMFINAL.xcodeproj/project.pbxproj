@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E389D182A3891DF0045916A /* QRCodeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E389D172A3891DF0045916A /* QRCodeGenerator.swift */; };
 		0ED86A532A37CDCC006C6098 /* KeyboardHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED86A522A37CDCC006C6098 /* KeyboardHandler.swift */; };
 		0ED86A562A37D744006C6098 /* PassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED86A552A37D744006C6098 /* PassView.swift */; };
 		3811CD562A34ED4500886CE4 /* BLOOMFINALApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3811CD552A34ED4500886CE4 /* BLOOMFINALApp.swift */; };
@@ -30,6 +31,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E389D172A3891DF0045916A /* QRCodeGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeGenerator.swift; sourceTree = "<group>"; };
 		0ED86A522A37CDCC006C6098 /* KeyboardHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHandler.swift; sourceTree = "<group>"; };
 		0ED86A552A37D744006C6098 /* PassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassView.swift; sourceTree = "<group>"; };
 		3811CD522A34ED4500886CE4 /* BLOOMFINAL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BLOOMFINAL.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -68,6 +70,7 @@
 			isa = PBXGroup;
 			children = (
 				0ED86A552A37D744006C6098 /* PassView.swift */,
+				0E389D172A3891DF0045916A /* QRCodeGenerator.swift */,
 			);
 			path = UIComponents;
 			sourceTree = "<group>";
@@ -251,6 +254,7 @@
 				3811CD862A36F69800886CE4 /* HomeView.swift in Sources */,
 				3811CD7E2A36D0F800886CE4 /* LoadingView.swift in Sources */,
 				3811CD562A34ED4500886CE4 /* BLOOMFINALApp.swift in Sources */,
+				0E389D182A3891DF0045916A /* QRCodeGenerator.swift in Sources */,
 				0ED86A532A37CDCC006C6098 /* KeyboardHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

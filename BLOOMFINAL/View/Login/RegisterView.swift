@@ -100,6 +100,7 @@ struct RegisterView: View{
                             .textContentType(.emailAddress)
                             .padding(.top, 15)
                             .padding(.leading, 30)
+                            .autocapitalization(.none)
                     }
                     
                     ZStack(alignment: .topLeading) {
@@ -118,6 +119,7 @@ struct RegisterView: View{
                             .textContentType (.password )
                             .padding(.top, 15)
                             .padding(.leading, 30)
+                            .autocapitalization(.none)
                     }
                     
                     Button(action: registerUser){

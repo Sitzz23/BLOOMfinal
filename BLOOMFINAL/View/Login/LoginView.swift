@@ -64,6 +64,7 @@ struct LoginView: View {
                         TextField("example@email. com", text: $emailID)
                             .padding(.top, 15)
                             .padding(.leading, 30)
+                            .autocapitalization(.none)
 //                            .focused($isTextFieldFocused)
 //                            .onTapGesture {
 //                                isTextFieldFocused = true
@@ -92,6 +93,7 @@ struct LoginView: View {
                             .textContentType (.emailAddress)
                             .padding(.top, 19)
                             .padding(.leading, 30)
+                            .autocapitalization(.none)
 //                            .focused($isTextFieldFocused)
 //                            .onTapGesture {
 //                                isTextFieldFocused = true
@@ -102,8 +104,8 @@ struct LoginView: View {
 //                    }
 
                     Button ("Reset password?", action: resetPassword)
-                        .foregroundColor(Color("myGray"))
-                        .font (.callout)
+                        .foregroundColor(Color("accent"))
+                        .font(.callout)
                         .fontWeight (.medium)
                         .tint (.black)
                         .hAlign(.trailing)
@@ -184,6 +186,7 @@ struct LoginView: View {
             }
             catch{
                 await setError(error)
+                
             }
         }
     }
