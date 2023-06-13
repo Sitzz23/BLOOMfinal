@@ -37,7 +37,7 @@ struct LoginView: View {
                     .padding(.leading, 220)
                     .padding(.top, 20)
                 
-                Image("Image 42")
+                Image("Image 15")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 300, height: 300)
@@ -52,7 +52,7 @@ struct LoginView: View {
                     ZStack(alignment: .topLeading) {
                         RoundedRectangle(cornerRadius: 14)
                             .stroke(Color("myGray"), lineWidth: 2)
-                            .frame(width: 350, height: 55)
+                            .frame(width: 370, height: 55)
                         
                         Text ("Email ID")
                             .font (.title3)
@@ -68,7 +68,6 @@ struct LoginView: View {
 //                            .onTapGesture {
 //                                isTextFieldFocused = true
 //                            }
-                        
                     }
                     .padding(.bottom, 20)
 //                    .onTapGesture {
@@ -80,7 +79,7 @@ struct LoginView: View {
                         
                         RoundedRectangle(cornerRadius: 14)
                             .stroke(Color("myGray"), lineWidth: 2)
-                            .frame(width: 350, height: 55)
+                            .frame(width: 370, height: 55)
                         
                         Text ("Password")
                             .font (.title3)
@@ -121,7 +120,10 @@ struct LoginView: View {
                 }
                 
                 HStack {
-                    Button(action: loginUser){
+                    Button(action: {
+                        // Action code here
+                    })
+                    {
                         Image("Image 43")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
@@ -132,7 +134,10 @@ struct LoginView: View {
                     Text("or")
                         .foregroundColor(Color("myGray"))
                     
-                    Button(action: loginUser){
+                    Button(action: {
+                        // Action Code here
+                    })
+                    {
                         Image("Image 18")
                         .resizable()
                         .aspectRatio(contentMode: .fit)

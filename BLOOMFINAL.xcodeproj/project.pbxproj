@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0ED86A532A37CDCC006C6098 /* KeyboardHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED86A522A37CDCC006C6098 /* KeyboardHandler.swift */; };
+		0ED86A562A37D744006C6098 /* PassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED86A552A37D744006C6098 /* PassView.swift */; };
 		3811CD562A34ED4500886CE4 /* BLOOMFINALApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3811CD552A34ED4500886CE4 /* BLOOMFINALApp.swift */; };
 		3811CD582A34ED4500886CE4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3811CD572A34ED4500886CE4 /* ContentView.swift */; };
 		3811CD5A2A34ED4600886CE4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3811CD592A34ED4600886CE4 /* Assets.xcassets */; };
@@ -30,6 +31,7 @@
 
 /* Begin PBXFileReference section */
 		0ED86A522A37CDCC006C6098 /* KeyboardHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHandler.swift; sourceTree = "<group>"; };
+		0ED86A552A37D744006C6098 /* PassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassView.swift; sourceTree = "<group>"; };
 		3811CD522A34ED4500886CE4 /* BLOOMFINAL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BLOOMFINAL.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3811CD552A34ED4500886CE4 /* BLOOMFINALApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLOOMFINALApp.swift; sourceTree = "<group>"; };
 		3811CD572A34ED4500886CE4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -62,6 +64,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0ED86A572A37D74B006C6098 /* UIComponents */ = {
+			isa = PBXGroup;
+			children = (
+				0ED86A552A37D744006C6098 /* PassView.swift */,
+			);
+			path = UIComponents;
+			sourceTree = "<group>";
+		};
 		3811CD492A34ED4500886CE4 = {
 			isa = PBXGroup;
 			children = (
@@ -108,6 +118,7 @@
 				3811CD7F2A36E89700886CE4 /* Login */,
 				3811CD7D2A36D0F800886CE4 /* LoadingView.swift */,
 				3811CD822A36E9AF00886CE4 /* Views + Extensions.swift */,
+				0ED86A572A37D74B006C6098 /* UIComponents */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -236,6 +247,7 @@
 				3811CD582A34ED4500886CE4 /* ContentView.swift in Sources */,
 				3811CD812A36E8BC00886CE4 /* RegisterView.swift in Sources */,
 				3811CD832A36E9AF00886CE4 /* Views + Extensions.swift in Sources */,
+				0ED86A562A37D744006C6098 /* PassView.swift in Sources */,
 				3811CD862A36F69800886CE4 /* HomeView.swift in Sources */,
 				3811CD7E2A36D0F800886CE4 /* LoadingView.swift in Sources */,
 				3811CD562A34ED4500886CE4 /* BLOOMFINALApp.swift in Sources */,

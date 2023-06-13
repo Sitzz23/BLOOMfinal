@@ -36,7 +36,7 @@ struct RegisterView: View{
                     .padding(.top, 20)
                     .hAlign(.leading)
                 
-                Image("Image 15")
+                Image("Image 42")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 300, height: 300)
@@ -44,24 +44,82 @@ struct RegisterView: View{
                 Text ("Create Account")
                     .font (.title3.bold())
                     .hAlign(.leading)
+                    .padding(.bottom, 10)
                 
-                VStack(spacing: 12){
-                    TextField("Username", text: $userName)
-                        .textContentType(.name)
-                        .border(1, .black)
-                        .padding(.top, 10)
+                VStack(spacing: 20){
                     
-                    iPhoneNumberField("Mobile number", text: $phoneNum)
-                        .border(1, .black)
+                    ZStack(alignment: .topLeading) {
+                        RoundedRectangle(cornerRadius: 14)
+                            .stroke(Color("myGray"), lineWidth: 2)
+                            .frame(width: 370, height: 44)
+                        
+                        Text ("User Name")
+                            .font (.title3)
+                            .fontWeight(.medium)
+                            .frame(width: 120, height: 20)
+                            .background(Color("background"))
+                            .offset(x:20, y: -10)
+                        
+                        TextField("Allen123", text: $userName)
+                            .textContentType(.name)
+                            .padding(.top, 15)
+                            .padding(.leading, 30)
+                    }
                     
-                    TextField("Email", text: $emailID)
-                        .textContentType(.emailAddress)
-                        .border(1, .black)
+                    ZStack(alignment: .topLeading) {
+                        RoundedRectangle(cornerRadius: 14)
+                            .stroke(Color("myGray"), lineWidth: 2)
+                            .frame(width: 370, height: 44)
+                        
+                        Text ("Phone Number")
+                            .font (.title3)
+                            .fontWeight(.medium)
+                            .frame(width: 150, height: 20)
+                            .background(Color("background"))
+                            .offset(x:20, y: -10)
+                        
+                        iPhoneNumberField("+91 78******16", text: $phoneNum)
+                            .textContentType(.name)
+                            .padding(.top, 15)
+                            .padding(.leading, 30)
+                    }
                     
-                    SecureField( "Password", text: $password)
-                        .textContentType (.password )
-                        .border(1, .black)
-                
+                    ZStack(alignment: .topLeading) {
+                        RoundedRectangle(cornerRadius: 14)
+                            .stroke(Color("myGray"), lineWidth: 2)
+                            .frame(width: 370, height: 44)
+                        
+                        Text ("Email Address")
+                            .font (.title3)
+                            .fontWeight(.medium)
+                            .frame(width: 150, height: 20)
+                            .background(Color("background"))
+                            .offset(x:20, y: -10)
+                        
+                        TextField("example@email .com", text: $emailID)
+                            .textContentType(.emailAddress)
+                            .padding(.top, 15)
+                            .padding(.leading, 30)
+                    }
+                    
+                    ZStack(alignment: .topLeading) {
+                        RoundedRectangle(cornerRadius: 14)
+                            .stroke(Color("myGray"), lineWidth: 2)
+                            .frame(width: 370, height: 44)
+                        
+                        Text ("Password")
+                            .font (.title3)
+                            .fontWeight(.medium)
+                            .frame(width: 100, height: 20)
+                            .background(Color("background"))
+                            .offset(x:20, y: -10)
+                        
+                        SecureField("********", text: $password)
+                            .textContentType (.password )
+                            .padding(.top, 15)
+                            .padding(.leading, 30)
+                    }
+                    
                     Button(action: registerUser){
                         Text("Sign up")
                             .foregroundColor(.white)
@@ -75,19 +133,19 @@ struct RegisterView: View{
                     
                 }
                 
-                HStack{
+                VStack{
                 Text ("Already have an account?")
                         .foregroundColor(Color("primary"))
                     
-                    Button ("Login Now"){
+                    Button ("Sign in")
+                    {
                         dismiss()
                     }
                     .fontWeight (.bold)
-                    .foregroundColor (Color("accent"))
+                    .foregroundColor(Color("accent"))
                 }
                 .font(.callout)
-                .padding(20)
-                Spacer()
+                .padding(3)
                 
             }
             .vAlign(.top)
@@ -148,7 +206,7 @@ struct RegisterBackgroundView: View {
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 250, height: 300)
                 .rotationEffect(Angle(degrees: -25))
-                .offset(x: -190, y: 410)
+                .offset(x: -205, y: 400)
                 
           
         }
