@@ -10,11 +10,14 @@ import Firebase
 
 struct EventContentView: View {
     
-//    var basedOnUID: Bool = false
-//    var uid: String = ""
+    //    var basedOnUID: Bool = false
+    //    var uid: String = ""
     @Binding var events: [Event]
     @State private var isFetching: Bool = true
     @State private var paginationDoc: QueryDocumentSnapshot?
+    @State private var showDetailView: Bool = false
+    @State private var selectedEvent: Event?
+    @Namespace private var animation
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false){
@@ -35,13 +38,23 @@ struct EventContentView: View {
                 }
             }
             .padding(15)
+            .overlay{
+                if let selectedEvent = selectedEvent, showDetailView{
+                    DetailView(show: $showDetailView, animation: animation, event: selectedEvent )
+                }
+            }
+            
+            //                if let selectedEvent, showDetailView{
+            //                    DetailView(show: $showDetailView ,animation: animation, event: Event?)
+            //                }
+            
         }
         .refreshable{
-           // guard !basedOnUID else{return}
+            // guard !basedOnUID else{return}
             
             isFetching = true
             events = []
-         //   paginationDoc = nil
+            //   paginationDoc = nil
             await fetchEvents()
         }
         .task{
@@ -49,17 +62,31 @@ struct EventContentView: View {
             await fetchEvents()
         }
     }
+    
     //displaying fetched events
     @ViewBuilder
     func Events()->some View{
         ForEach(events){event in
-            EventCardView(event: event){updatedEvent in
+            Button{
                 
-            }onDelete: {
+            }label:{
                 
-            }.onAppear{
-                if event.id == events.last?.id && paginationDoc != nil{
-                    Task{await fetchEvents()}                }
+                
+                EventCardView(event: event){updatedEvent in
+                    
+                }onDelete: {
+                    
+                }
+                .onAppear{
+                    if event.id == events.last?.id && paginationDoc != nil{
+                        Task{await fetchEvents()}                }
+                }
+                .onTapGesture {
+                    withAnimation(.interactiveSpring(response: 0.6, dampingFraction: 0.7, blendDuration: 0.7)){
+                        selectedEvent = event
+                        showDetailView = true
+                    }
+                }
             }
             Divider()
                 .padding(.top, 10)
@@ -82,9 +109,9 @@ struct EventContentView: View {
                     .limit(to: 20)
             }
             //query for UID
-//            if basedOnUID{
-//                query = query.whereField("userUID", in: uid)
-//            }
+            //            if basedOnUID{
+            //                query = query.whereField("userUID", in: uid)
+            //            }
             
             let docs = try await query.getDocuments()
             

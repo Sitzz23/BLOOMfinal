@@ -11,6 +11,7 @@ struct ExploreView: View {
     
     @State private var recentEvents: [Event] = []
     
+    
     var body: some View {
         NavigationStack{
             ScrollView(.vertical, showsIndicators: false){

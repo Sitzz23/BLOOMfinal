@@ -10,6 +10,7 @@
 		0E4DF85A2A391ED600D07B6E /* QRCodeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4DF8592A391ED600D07B6E /* QRCodeGenerator.swift */; };
 		0E4DF85D2A391F0B00D07B6E /* PassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4DF85C2A391F0B00D07B6E /* PassView.swift */; };
 		0E869C842A390325004DD6C0 /* CreateNewEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E869C832A390325004DD6C0 /* CreateNewEvent.swift */; };
+		0EC8E4A72A3AE2CE00A1FC20 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC8E4A62A3AE2CE00A1FC20 /* DetailView.swift */; };
 		3811CD562A34ED4500886CE4 /* BLOOMFINALApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3811CD552A34ED4500886CE4 /* BLOOMFINALApp.swift */; };
 		3811CD582A34ED4500886CE4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3811CD572A34ED4500886CE4 /* ContentView.swift */; };
 		3811CD5A2A34ED4600886CE4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3811CD592A34ED4600886CE4 /* Assets.xcassets */; };
@@ -46,6 +47,7 @@
 		0E4DF8592A391ED600D07B6E /* QRCodeGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeGenerator.swift; sourceTree = "<group>"; };
 		0E4DF85C2A391F0B00D07B6E /* PassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassView.swift; sourceTree = "<group>"; };
 		0E869C832A390325004DD6C0 /* CreateNewEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewEvent.swift; sourceTree = "<group>"; };
+		0EC8E4A62A3AE2CE00A1FC20 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		3811CD522A34ED4500886CE4 /* BLOOMFINAL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BLOOMFINAL.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3811CD552A34ED4500886CE4 /* BLOOMFINALApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLOOMFINALApp.swift; sourceTree = "<group>"; };
 		3811CD572A34ED4500886CE4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 			children = (
 				0E4DF8592A391ED600D07B6E /* QRCodeGenerator.swift */,
 				0E4DF85C2A391F0B00D07B6E /* PassView.swift */,
+				0EC8E4A62A3AE2CE00A1FC20 /* DetailView.swift */,
 			);
 			path = UIComponents;
 			sourceTree = "<group>";
@@ -299,6 +302,7 @@
 				3811CD832A36E9AF00886CE4 /* Views + Extensions.swift in Sources */,
 				38E4B77C2A3990740026A487 /* ReusableContentView.swift in Sources */,
 				38CCC4932A386ACD00E350C9 /* EventContentView.swift in Sources */,
+				0EC8E4A72A3AE2CE00A1FC20 /* DetailView.swift in Sources */,
 				3811CD862A36F69800886CE4 /* HomeView.swift in Sources */,
 				3811CD7E2A36D0F800886CE4 /* LoadingView.swift in Sources */,
 				38E4B7832A39B01B0026A487 /* PassData.swift in Sources */,
