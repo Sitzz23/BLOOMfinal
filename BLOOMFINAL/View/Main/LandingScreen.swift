@@ -14,6 +14,7 @@ struct LandingScreen: View {
     @State var showDetailPage: Bool = false
     @Namespace var animation
     @State var animateView: Bool = false
+    @State private var showProfileSheet = false
    // @State var animateContent: Bool = false
    // @State var scrollOffset: CGFloat = 0
     
@@ -25,6 +26,7 @@ struct LandingScreen: View {
     
     
     var body: some View {
+        
         ScrollView(.vertical, showsIndicators: false){
             VStack(spacing: 0){
                 HStack(alignment: .center){
@@ -38,12 +40,15 @@ struct LandingScreen: View {
                         
                     }.hAlign(.leading)
                     Button{
-                        
+                        showProfileSheet = true
                     }label: {
                         Image(systemName: "person.circle.fill")
                             .font(.largeTitle)
                             .tint(Color("tab"))
                     }
+                }
+                .sheet(isPresented: $showProfileSheet) {
+                    ProfileView()
                 }
                 .padding([.horizontal, .bottom])
                 .opacity(showDetailPage ? 0 : 1)
