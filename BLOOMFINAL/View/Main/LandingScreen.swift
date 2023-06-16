@@ -98,7 +98,7 @@ struct LandingScreen: View {
                     Divider()
                     
                     Button{
-                        
+                        shareEvent()
                     }label:{
                         Label {
                             Text ("Share Event")
@@ -109,7 +109,7 @@ struct LandingScreen: View {
                         .padding (.vertical, 10)
                         .padding (.horizontal, 25)
                         .background{
-                            RoundedRectangle (cornerRadius: 5, style:.continuous)
+                            RoundedRectangle (cornerRadius: 10, style:.continuous)
                                 .fill(.ultraThinMaterial)
                         }
                     }
@@ -154,6 +154,18 @@ struct LandingScreen: View {
         .transition(.identity)
     }
     
+    func shareEvent() {
+
+        let shareText = "Please down BLOOM's app to register for this Pottery Event.\nEvent: Pottery Making\nPotters Street\n30 June 2023"
+        
+
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+            let rootViewController = windowScene.windows.first?.rootViewController {
+            let activityViewController = UIActivityViewController(activityItems: [shareText], applicationActivities: nil)
+            rootViewController.present(activityViewController, animated: true, completion: nil)
+        }
+    }
+    
     //card view
     @ViewBuilder
     func CardView(item: Today)-> some View{
@@ -192,7 +204,7 @@ struct LandingScreen: View {
                 Spacer()
                 Button{}
             label: {
-                Text("INFO")
+                Text("Register")
                     .fontWeight (.bold)
                     .foregroundColor (.white)
                     .padding (.vertical,8)
